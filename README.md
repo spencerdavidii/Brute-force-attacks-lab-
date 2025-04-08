@@ -17,8 +17,28 @@ For instance, people have a favorite website they sign into everyday. The login 
 
 Now a brute force attacker finds this same page and doesn’t know your password . However, they use a computer program that automatically tries a huge list of common passwords — like 123456, qwerty, or letmein — over and over again.
 The hacker is preying on users that dont utilile secure complexity passwords. 
-If the website doesn’t have protection (like account lockouts or CAPTCHA), the attacker might eventually guess your password and get in.
+If the website doesn’t have protection, the attacker might eventually guess your password and get in.
+
+
+###Lets Defend lab : What is the IP address of the server targeted by the attacker's brute-force attack?
+
+I will now walk through completing the brute force attack challenge. I utilized the tool wireshark to help me identify a web server that has been damaged. Essentially, Wireshark is like a security camera for network traffic. It lets you see what’s happening behind the scenes when computers talk to each other.
+
+The challenge began with a security alert indicating possible brute force activity in RDP services. I was tasked with confirming whether it was an actual attack and gathering evidence. 
+
+**reference: Wireshark Tool
+![image](https://github.com/user-attachments/assets/7a9b45c1-8a0c-4b93-b5db-7f1ce6402b38)
+
+
+**Statistics 
+
+I opened the packet capture file and began analyzing the Remote desktop protocol traffic. In the "Source" and "Destination" columns, I saw the source IP is 192.168.190.137 (this is the attacker). The destination IP is 51.116.96.181 — this is the system being attacked
+This pattern repeats several times.
+ **Reference: Source and Destination Column 
+![image](https://github.com/user-attachments/assets/fdfdbd2e-d700-4187-8fd0-1920b4940c7a)
+
+ Additionally, the timestamp column showed that the attacker is sending multiple connection requests very quickly, within milliseconds. One of the signs of common brute force attacks is rapidly trying logins.
 
 
 
-Each time, it fills in the login form just like a person would, but much faster — trying thousands of guesses in minutes.
+
